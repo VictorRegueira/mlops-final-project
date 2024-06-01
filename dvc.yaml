@@ -1,0 +1,23 @@
+stages:
+  preprocess:
+    cmd: python src\data\preprocess.py
+    deps:
+      - src\data\preprocess.py
+      - data\raw\dataset.csv
+    outs:
+      - data\processed\processed_dataset.csv
+
+  train:
+    cmd: python src\models\train.py
+    deps:
+      - src\models\train.py
+      - data\processed\processed_dataset.csv
+    outs:
+      - models\model.joblib
+
+  evaluate:
+    cmd: python src\evaluation\evaluate.py
+    deps:
+      - src\evaluation\evaluate.py
+      - data\processed\processed_dataset.csv
+      - models\model.joblib

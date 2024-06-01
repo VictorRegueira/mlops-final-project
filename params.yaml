@@ -1,0 +1,2 @@
+data_path: data\processed\processed_dataset.csv
+model_path: models\model.joblib
